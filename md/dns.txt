@@ -1,0 +1,6 @@
+主要原因是没有配DNS,/etc下需要修改resolv.conf文件，并添加正确的DNS，没有就需要新建
+
+$ echo 'nameserver 193.169.1.57'　>>  /etc/resolv.conf
+这时候可能还不行，检查是否有这些文件　/etc/hosts /etc/nsswitch.conf ，/lib/libnss_dns* /lib/libnss_files* /lib/libresolv*
+
+做rootfs的时候把这些库给去掉了，导致不读resolv.conf文件，其中hosts 和nsswitch.conf可以空

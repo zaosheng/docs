@@ -1,0 +1,106 @@
+
+java
+抽象类方法默认访问权限都是default
+调用本类的构造方法this(参数)
+字节流：
+InputStream
+|-- FileInputStream (基本文件流）
+|-- BufferedInputStream
+|-- DataInputStream
+|-- ObjectInputStream
+字符流
+Reader
+|-- InputStreamReader (byte->char 桥梁）
+|-- BufferedReader (常用）
+Writer
+|-- OutputStreamWriter (char->byte 桥梁）
+|-- BufferedWriter
+|-- PrintWriter （常用）
+
+接口内什么都没有起标记作用
+接口内的变量都是 public static final修饰
+接口内的方法默认都是 public abstract 修饰
+
+构造方法没有返回类型，也不能定义为void，在方法名前面不声明方法类型。
+static方法不能被子类覆写，在子类中定义了和父类完全相同的static方法，则父类的static方法被隐藏，Son.staticmethod()或new Son().staticmethod()都是调用的子类的static方法，如果是Father.staticmethod()或者Father f = new Son(); f.staticmethod()调用的都是父类的static方法。
+
+final修饰的成员变量为基本数据类型是，在赋值之后无法改变。当final修饰的成员变量为引用数据类型时，在赋值后其指向地址无法改变，但是对象内容还是可以改变的。
+final修饰的成员变量在赋值时可以有三种方式。1、在声明时直接赋值。2、在构造器中赋值。3、在初始代码块中进行赋值。
+
+父类Ｂ静态代码块->子类Ａ静态代码块->父类Ｂ非静态代码块->父类Ｂ构造函数->子类Ａ非静态代码块->子类Ａ构造函数(构造函数可能要给非静态代码块的一些成员变量赋值，所以必须在这之前先执行非静态代码块，要不然构造函数会出现相关的成员属性无定义)
+
+
+Java提供和支持创建抽象类和接口。它们的实现有共同点，不同点在于：
+接口中所有的方法隐含的都是抽象的。而抽象类则可以同时包含抽象和非抽象的方法。
+类可以实现很多个接口，但是只能继承一个抽象类
+类可以不实现抽象类和接口声明的所有方法，当然，在这种情况下，类也必须得声明成是抽象的。
+抽象类可以在不提供接口方法实现的情况下实现接口。
+Java接口中声明的变量默认都是final的。抽象类可以包含非final的变量。
+Java接口中的成员函数默认是public的。抽象类的成员函数可以是private，protected或者是public。
+接口是绝对抽象的，不可以被实例化，抽象类也不可以被实例化。
+也可以参考JDK8中抽象类和接口的区别
+
+
+总共有两大接口：Collection 和Map ，一个元素集合，一个是键值对集合； 其中List和Set接口继承了Collection接口，一个是有序元素集合，一个是无序元素集合； 而ArrayList和 LinkedList 实现了List接口，HashSet实现了Set接口，这几个都比较常用； HashMap 和HashTable实现了Map接口，并且HashTable是线程安全的，但是HashMap性能更好；
+
+java.util.Collection [I]
+
+|—java.util.List [I]
+
+    |—java.util.ArrayList [C]
+
+    |—java.util.LinkedList [C]
+
+    |—java.util.Vector [C]
+
+        |—java.util.Stack [C]
+
+|—java.util.Set [I]
+
+    |—java.util.HashSet [C]
+
+    |—java.util.SortedSet [I]
+
+        |—java.util.TreeSet [C]
+java.util.Map [I]
+
+|—java.util.SortedMap [I]
+
+    |—java.util.TreeMap [C]
+
+|—java.util.Hashtable [C]
+
+|—java.util.HashMap [C]
+
+    |—java.util.LinkedHashMap [C]
+
+|—java.util.WeakHashMap [C]
+
+
+
+位图索引
+
+缓存
+
+粘包
+tcp 流传输
+应用层 socket.send 和 socket.receive 数据不能一一对应
+解决办法 
+	应用层协议（比如每次发数据有数据长度和数据内容组成）  
+	分隔符
+    定长发送定长接收	
+
+InputStream  read()方法重写
+jQuery 绑定事件：on("click",function)
+jQuery Ajax处理函数$.post()、$.get()、$.ajax()、$.jsonp()
+Spring控制层返回  String或ModeAndView
+WebService是什么？ Web服务调用 ，结合WSDL与SOAP行成远程方法调用实现有两种：CXF、Jersey
+RPC: 其实WebService就是rpc的一种实现，只不过rpc是最原始的方式
+
+Spring的自动注入注解有：@component @service @controler @reposertry
+缓存 一级和二级 （一级默认打开）
+
+强引用 软引用（内存不足，才回收）softreference 弱引用（断开连接，就回收）weakhashmap  虚引用
+
+
+transient 修饰的变量不会被序列化， static修饰变量也不会序列化
